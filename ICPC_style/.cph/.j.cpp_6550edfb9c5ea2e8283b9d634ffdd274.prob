@@ -1,0 +1,1 @@
+{"name":"Local: j","url":"d:\\ICPC_style\\j.cpp","tests":[{"id":1775031350763,"input":"hello1World2X\naBAb222abD32Gggp\naasdafsdfDSF","output":"2\n3\n0"},{"id":1775032911617,"input":"a\nA\n1\na1A\nA1\n11","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\ICPC_style\\j.cpp","group":"local","local":true}

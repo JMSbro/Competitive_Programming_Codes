@@ -1,0 +1,14 @@
+
+const ll N = (ll) 1e8 + 5;
+bitset<N> isPrime;
+// Assume all odd numbers are prime
+for(int i = 3; i <= n; i += 2){
+    isPrime[i] = 1;
+}
+isPrime[2] = 1;
+int root = sqrt(n) + 2;
+for(int i = 3; i <= root; i += 2){
+    for(int j = i * i; j <= n; j += 2 * i){
+        isPrime[j] = 0;
+    }
+}

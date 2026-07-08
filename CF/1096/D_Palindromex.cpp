@@ -1,0 +1,271 @@
+
+//In the name of ALLAH
+
+#include<bits/stdc++.h>
+// #include <iostream>
+// #include <vector>
+// #include <algorithm>
+// #include <map>
+// #include <set>
+// #include <iomanip>
+// #include <cmath>
+// #include <cstring>
+// #include <queue>
+// #include <stack>
+// #include <utility>
+#include<ext/pb_ds/assoc_container.hpp>
+#include<ext/pb_ds/tree_policy.hpp>
+
+using namespace std;
+using namespace __gnu_pbds;
+template<typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag,tree_order_statistics_node_update>;
+//use less_equal for ordered multiset
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef vector<vi> vvi;
+typedef vector<vl> vvl;
+typedef pair<int,int> pii;
+typedef pair<double, double> pdd;
+typedef pair<ll, ll> pll;
+typedef vector<pii> vii;
+typedef vector<pll> vll;
+typedef double dl;
+
+#define pb push_back
+#define F first
+#define S second
+#define mp make_pair
+#define endl '\n'
+#define all(a) (a).begin(),(a).end()
+#define sz(x) (int)x.size()
+#define mid(l,r) (l + (r - l) / 2)
+#define left(node) (node*2)
+#define right(node) (node*2+1)
+#define mx_int_prime 999999937
+#define  yes  cout << "YES\n";
+#define  no  cout << "NO\n";
+
+const double PI = acos(-1);
+const double eps = 1e-9;
+const int inf = 2000000000;
+const ll infLL = 9000000000000000000;
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+//#define gcd(a,b) __gcd(a,b)
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define frac(n) cout << fixed << setprecision(n)
+#define file() freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
+
+typedef vector<int>::iterator vit;
+typedef set<int>::iterator sit;
+
+
+int dx[] = {0, 0, +1, -1};
+int dy[] = {+1, -1, 0, 0};
+//int dx[] = {+1, 0, -1, 0, +1, +1, -1, -1};
+//int dy[] = {0, +1, 0, -1, +1, -1, +1, -1};
+
+
+
+template < typename F, typename S >
+ostream& operator << ( ostream& os, const pair< F, S > & p ) {
+            return os << "(" << p.first << ", " << p.second << ")";
+}
+
+template < typename T >
+ostream &operator << ( ostream & os, const vector< T > &v ) {
+            os << "{";
+                for(auto it = v.begin(); it != v.end(); ++it) {
+                                if( it != v.begin() ) os << ", ";
+                                        os << *it;
+                                            }
+                    return os << "}";
+}
+
+template < typename T >
+ostream &operator << ( ostream & os, const set< T > &v ) {
+            os << "[";
+                for(auto it = v.begin(); it != v.end(); ++it) {
+                                if( it != v.begin() ) os << ", ";
+                                        os << *it;
+                                            }
+                    return os << "]";
+}
+
+template < typename T >
+ostream &operator << ( ostream & os, const multiset< T > &v ) {
+            os << "[";
+                for(auto it = v.begin(); it != v.end(); ++it) {
+                                if( it != v.begin() ) os << ", ";
+                                        os << *it;
+                                            }
+                    return os << "]";
+}
+
+template < typename F, typename S >
+ostream &operator << ( ostream & os, const map< F, S > &v ) {
+            os << "[";
+                for(auto it = v.begin(); it != v.end(); ++it) {
+                                if( it != v.begin() ) os << ", ";
+                                        os << it -> first << " = " << it -> second ;
+                                            }
+                    return os << "]";
+}
+
+#define dbg(args...) do {cerr << #args << " : "; faltu(args); } while(0)
+
+void faltu () {
+            cerr << endl;
+}
+
+template <typename T>
+void faltu( T a[], int n ) {
+            for(int i = 0; i < n; ++i) cerr << a[i] << ' ';
+                cerr << endl;
+}
+
+template <typename T, typename ... hello>
+void faltu( T arg, const hello &... rest) {
+            cerr << arg << ' ';
+                faltu(rest...);
+}
+
+/// no debugger for stack , queue and priority queue. also no iterator for them
+/// comment cin >> t for single test case
+vi v;
+int n;
+int ops(int l, int r){
+    set<int> s;
+    for(int i = 0; i <= n; i++){
+        s.insert(i);
+    }
+
+    while(l >= 0 && r < 2 *n && v[l] == v[r]){
+        s.erase(v[l]);
+        l--, r++;
+    }
+
+    return *s.begin();
+}
+void solve(){
+    cin >> n;
+    v = vector<int> (2*n);
+    for(auto &u: v) cin >> u;
+
+    int x = -1, y;
+    for(int i = 0; i < 2 * n; i++){
+        if(!v[i]){
+            if(~x) y= i;
+            else x = i;
+        }
+    }
+
+    cout << max({ops(x,x), ops(y,y), ops((x + y)/ 2, (x + y+ 1) /2)}) << endl;
+
+    // int tmp[n+1], vis[n];
+    // memset(tmp, 0, sizeof(tmp));
+    // memset(vis, 0, sizeof(vis));
+    // //dbg(tmp, vis);
+    // // for(auto u: vis) cout << u << ' ';
+    // // cout << endl; 
+
+    // vi v(2*n);
+    // map<int, vector<int>> m;
+    // //n = 2 *n;
+    
+    // for(int i = 0; i < 2*n; i++){
+    //     int a; cin >> a;
+    //     v[i] = a;
+    //     m[a].pb(i);
+    // }
+    // //dbg(v);
+
+    // int ans = 0;
+    // int sz = m.size();
+
+    // for(int i = 0; i < sz; i++){
+    //     if(vis[i]) continue;
+
+    //     int l , r; 
+    //     if(m[i][0] < m[i][1]) {
+    //         l = m[i][0];
+    //         r = m[i][1];
+    //     }
+    //     else{
+    //         r = m[i][0];
+    //         l = m[i][1];
+    //     }
+    //     //dbg(l, r);
+
+    //     int ispal = 1;
+    //     vi tm;
+
+    //     while(l <= r){
+    //         if(v[l] == v[r]){
+    //             int val = v[l];
+    //             tmp[val] = 1;
+    //             if(l != r) vis[val] = 1;
+    //             l++;
+    //             r--;
+    //             tm.pb(val);
+    //         }
+    //         else {
+    //             ispal = 0;
+    //             break;
+    //         }
+    //     }
+    //     // for(int i = 0; i < n + 1; i++){
+    //     //     cout << tmp[i];
+    //     // }cout << endl;
+
+    //     if(ispal) {
+    //         for(int i = 0; i <= n; i++){
+    //             if(tmp[i] == 0){
+    //                 ans = max(ans, i);
+    //                 break;
+    //             }
+    //         }
+    //     }
+    //     //memset(tmp, 0, sizeof(tmp));
+    //     for(auto u: tm){
+    //         tmp[u] = 0;
+    //     }
+    // }
+
+    // ans == 0 ? cout << 1 << endl : cout << ans << endl;
+
+}
+
+int main()
+{
+    optimize();
+    int t = 1;
+    cin >> t;
+    // if(t == 99858){
+    //   for(int i = 1; i <= t; i++){
+    //     if(i == 27556) {
+    //         int n,k;
+    //         cin >> n >> k;
+    //         cout << n << k;
+    //     }
+    //     else {
+    //         int n,k;
+    //         cin >> n >> k;
+    //     }
+    //   }
+    // }
+    // else {
+    //     while(t--){
+    //         solve();
+    //     }
+    // }
+    while(t--){
+        solve();
+    }
+    return 0;
+}

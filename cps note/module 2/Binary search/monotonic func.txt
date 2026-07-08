@@ -1,0 +1,3 @@
+factory machines problem ta ekta monotonic function er example. ei function gulay hoy value bare noile komte thake. tar uporei binary array te jevabe binary search chalaisilam sevabe chalabo.
+
+binary array te value paile right or left e gie check kora lage j kon position e gie first value ta paisi. ekhane position janatai main uddesho. look at the binary array code.

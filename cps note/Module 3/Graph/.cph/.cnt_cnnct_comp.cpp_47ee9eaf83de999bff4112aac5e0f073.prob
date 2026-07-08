@@ -1,0 +1,1 @@
+{"name":"Local: cnt_cnnct_comp","url":"d:\\cps note\\Module 3\\Graph\\cnt_cnnct_comp.cpp","tests":[{"id":1775125928784,"input":"8 5\n1 4\n1 3\n2 6\n5 7\n8 7","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\cps note\\Module 3\\Graph\\cnt_cnnct_comp.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: f","url":"d:\\ICPC_style\\pa1\\f.cpp","tests":[{"id":1778489373816,"input":"6\n1\n2\n3\n4\n5\n6\n","output":"1\n4\n9\n6\n5\n6\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\ICPC_style\\pa1\\f.cpp","group":"local","local":true}

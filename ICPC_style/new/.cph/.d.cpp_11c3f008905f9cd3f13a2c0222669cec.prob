@@ -1,0 +1,1 @@
+{"name":"Local: d","url":"d:\\ICPC_style\\new\\d.cpp","tests":[{"id":1776071610444,"input":"3\n1 1 5 3 2 3\n1 1 5 3 4 1\n1 1 5 3 3 2\n","output":"LEFT\nRIGHT\nTOUCH\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\ICPC_style\\new\\d.cpp","group":"local","local":true}
