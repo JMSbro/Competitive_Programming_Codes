@@ -1,0 +1,1 @@
+{"name":"Local: Game_of_strings","url":"/mnt/46AA2E5EAA2E4B2F/Competitive_Programming_Codes/toph/Game_of_strings.cpp","tests":[{"id":1783599960146,"input":"2\nbabc\nab\n3","output":"aabbbaaa"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/46AA2E5EAA2E4B2F/Competitive_Programming_Codes/toph/Game_of_strings.cpp","group":"local","local":true}
