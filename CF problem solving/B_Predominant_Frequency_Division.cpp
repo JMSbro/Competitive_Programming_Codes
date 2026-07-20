@@ -143,20 +143,45 @@ void faltu( T arg, const hello &... rest) {
 /// comment cin >> t for single test case
 
 void solve(){
-    int n, s, m; cin >> n >> s >> m;
+    int n;cin>>n;
+    vi v(n);
+    fill(v);
 
-    int ans = INT_MIN, str = 0;
-
+    int cnto = 0, big = 0, id = -1, rem = n;
     for(int i = 0; i < n; i++){
-        int a, b; cin >> a >> b;
-        
-        ans = max(ans, a - str);
-        str = b;
-    }
-    ans = max(ans, m - str);
+        if(v[i] == 2 || v[i] == 3) big++;
+        else cnto++;
+        rem--;
 
-    if(ans >= s) yes
-    else no
+        if(cnto >= big){
+            id = i+1;
+            if(v[i+1] == 3 && cnto > big) id++, rem--;
+            big = 0;
+            cnto=0;
+            break;
+        }
+    }
+    if(rem <2){
+        no return;
+    }
+
+    for(int i = id; i < n; i++){
+        if(v[i] == 3) big++;
+        else cnto++;
+        rem--;
+
+        if(cnto >= big){
+            id = i+1;
+            big = 0;
+            cnto = 0;
+            break;
+        }
+    }
+    if(rem < 1) {
+        no return;
+    }
+
+    yes
 }
 
 int main()
