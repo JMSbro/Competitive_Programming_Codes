@@ -34,18 +34,22 @@ typedef vector<pll> vll;
 typedef double dl;
 
 #define pb push_back
-#define f first
-#define s second
+#define F first
+#define S second
 #define mp make_pair
 #define endl '\n'
 #define all(a) (a).begin(),(a).end()
 #define sz(x) (int)x.size()
-#define mid(l,r) ((r+l)/2)
+#define mid(l,r) (l + (r - l) / 2)
 #define left(node) (node*2)
 #define right(node) (node*2+1)
 #define mx_int_prime 999999937
 #define  yes  cout << "YES\n";
 #define  no  cout << "NO\n";
+#define fill(x) for(auto &u: x) cin >> u;
+#define allprint(x) for(auto u: x) cout << u << ' '; cout << endl;
+#define print(x) cout << x << endl;
+#define f(i, j, n, k) for (int i = j; i < n; i = i + k)
 
 const double PI = acos(-1);
 const double eps = 1e-9;
@@ -54,7 +58,7 @@ const ll infLL = 9000000000000000000;
 #define MOD 1000000007
 
 #define mem(a,b) memset(a, b, sizeof(a) )
-#define gcd(a,b) __gcd(a,b)
+//#define gcd(a,b) __gcd(a,b)
 #define sqr(a) ((a) * (a))
 
 #define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
@@ -142,6 +146,60 @@ void solve(){
     int n;
     cin >> n;
     vi v(n);
+    fill(v);
+
+    int cnt = 0, a = 0, b = 0;
+    for(int i = 0; i < n; i++){
+        if(v[i] % 2 == 0) {
+            cnt++;
+            if(a) b = v[i];
+            else a = v[i];
+        }
+    }
+
+    bool f = 0;
+    if(cnt > 1){
+        cout << a << ' ' << b << endl;
+    }
+    else if(cnt == 1){
+        for(int i = 0; i < n; i++){
+            if(v[i] != a && (v[i] % a) % 2 == 0) {
+                b = v[i];
+                f = 1;
+            }
+        }
+        if(f)cout << a << ' ' << b << endl;
+        else {
+            for(int i = 0; i < n ; i++){
+            for(int j = i+ 1; j < n; j++){
+                int m = v[j] %  v[i];
+                if(m % 2 == 0){
+                    a = v[i]; b = v[j];
+                    f = 1;
+                    break;
+                }
+            }
+        }
+        if(f)cout << a << ' ' << b << endl;
+        else cout << -1 << endl;
+        }
+    }
+    else{
+        for(int i = 0; i < n ; i++){
+            for(int j = i+ 1; j < n; j++){
+                int m = v[j] %  v[i];
+                if(m % 2 == 0){
+                    a = v[i]; b = v[j];
+                    f = 1;
+                    break;
+                }
+            }
+        }
+        if(f)cout << a << ' ' << b << endl;
+        else cout << -1 << endl;
+    }
+
+
 }
 
 int main()

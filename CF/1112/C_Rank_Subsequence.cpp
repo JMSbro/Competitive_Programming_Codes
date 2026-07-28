@@ -143,39 +143,86 @@ void faltu( T arg, const hello &... rest) {
 /// comment cin >> t for single test case
 
 void solve(){
-    int n; cin >> n; 
-    vi a(n), b(n);
-    fill(a) ; fill(b);
+    int n; cin >> n;
+    vii L(n), R(n), idx(n);
+    int l = 1, r = n; 
+    //cout << idx << endl;
 
-    int ans = 0, step = 0;
-    int as = a.size(), bs = b.size();
-    
-    bool nope = true;
-    for(int i= 0; i < n; i++){
-        step = 0;
-        nope = true;
+    for(int i = 0; i < n; i++){
+        idx[i] = {l, r};
+        l++, r--;
 
-        if(a[i] > b[i]){
-            for(int j = i + 1; j < n; j++){
-                if(a[j] <= b[i] ) {
-                    step++; 
-                    nope = false;
-                    for(int k = j; k > i; k--){
-                        swap(a[k], a[k - 1]);
-                    }
-                    break;
-                }
-                else step++;
-            }
-            if(nope){
-                cout << -1 << endl; return;
-            }
-            else ans += step;
-        }
-
+        int a, b , c , d; cin >> a >> b >> c >> d;
+        L[i] = {a, b};
+        R[i] = {c, d};
     }
 
-    cout << ans << endl;
+    bool ok = 1;
+    for(int m = n; m >= 1; m--){
+        int j = 1; 
+
+        for(int i = 0; i < n && j <= m; ++i){
+            int x = m - j + 1; 
+            if((j < L[i].F || j > L[i].S) && (x < R[i].F || x > R[i].S)) ++j;
+    
+        }
+
+        if(j != m+1) continue;
+        else {
+            cout << m << endl;
+            return;
+        }
+    }
+
+    cout << 0 << endl;
+    
+    // for(int i = 0, m = idx.size() - 1; i < idx.size() && m >= 0 ;i++,m--){
+    //     int lr = idx[i].F, rr = idx[i].S, ck = 0;
+    //     if(lr >= L[i].F && lr <= L[i].S){
+    //         ck = 1;
+    //     }
+    //     else if(rr >= R[i].F && rr <= R[i].S){
+    //         ck = 1 ;
+    //     }
+    //     if(ck){
+    //         for(int j = i -1; j >= 0; j--){
+    //             idx[j].S--;
+    //         }
+    //         for(int k = i+1; k < idx.size(); k++){
+    //             idx[k].F--;
+    //         }
+    //         idx.erase(idx.begin()+ i);
+    //         L.erase(L.begin() + i);
+    //         R.erase(R.begin() + i);
+    //         i = -1;
+    //     }
+    //     if(idx.size() == 0) break;
+
+    //     int lr2 = idx[m].F, rr2 = idx[m].S;
+    //     ck = 0;
+    //     if(lr2 >= L[m].F && lr2 <= L[m].S){
+    //         ck = 1;
+    //     }
+    //     else if(rr2 >= R[m].F && rr2 <= R[m].S){
+    //         ck = 1 ;
+    //     }
+    //     if(ck){
+    //         for(int j = m -1; j >= 0; j--){
+    //             idx[j].S--;
+    //         }
+    //         for(int k = m+1; k < idx.size(); k++){
+    //             idx[k].F--;
+    //         }
+    //         idx.erase(idx.begin()+ m);
+    //         L.erase(L.begin() + m);
+    //         R.erase(R.begin() + m);
+    //         m = idx.size() - 1;
+    //     }
+    //     if(idx.size() == 0) break;
+    // }
+
+    // cout << idx.size() << endl;
+    //dbg(idx, L, R);
 }
 
 int main()

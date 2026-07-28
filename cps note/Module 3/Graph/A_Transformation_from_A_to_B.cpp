@@ -141,48 +141,53 @@ void faltu( T arg, const hello &... rest) {
 
 /// no debugger for stack , queue and priority queue. also no iterator for them
 /// comment cin >> t for single test case
+map<int, int> prevNode;
+int a, b;
+bool pos = false;
 
-void solve(){
-    int n; cin >> n; 
-    vi a(n), b(n);
-    fill(a) ; fill(b);
+void dfs(ll n, int prev){
+    if(n > b || pos) return;
+    prevNode[n] = prev;
 
-    int ans = 0, step = 0;
-    int as = a.size(), bs = b.size();
-    
-    bool nope = true;
-    for(int i= 0; i < n; i++){
-        step = 0;
-        nope = true;
-
-        if(a[i] > b[i]){
-            for(int j = i + 1; j < n; j++){
-                if(a[j] <= b[i] ) {
-                    step++; 
-                    nope = false;
-                    for(int k = j; k > i; k--){
-                        swap(a[k], a[k - 1]);
-                    }
-                    break;
-                }
-                else step++;
-            }
-            if(nope){
-                cout << -1 << endl; return;
-            }
-            else ans += step;
-        }
-
+    if(n == b) {
+        pos = true; return;
     }
 
-    cout << ans << endl;
+    dfs(2*n, n);
+    dfs(n*10 + 1, n);
+}
+
+void solve(){
+     cin >> a >> b;
+
+    dfs(a, 0);
+
+    if(pos){
+        vi node;
+        int str = b;
+
+        while(1){
+            node.pb(str);
+            str = prevNode[str];
+            if(str == a) break;
+        }
+        node.pb(a);
+
+        reverse(all(node));
+
+        cout << "YES\n" << node.size() << endl;
+        for(auto &u: node){
+            cout << u << ' ';
+        }cout << endl;
+    }
+    else cout << "NO" << endl;
 }
 
 int main()
 {
     optimize();
     int t = 1;
-    cin >> t;
+    //cin >> t;
     // if(t == 99858){
     //   for(int i = 1; i <= t; i++){
     //     if(i == 27556) {

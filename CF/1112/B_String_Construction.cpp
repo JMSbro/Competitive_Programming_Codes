@@ -143,39 +143,43 @@ void faltu( T arg, const hello &... rest) {
 /// comment cin >> t for single test case
 
 void solve(){
-    int n; cin >> n; 
-    vi a(n), b(n);
-    fill(a) ; fill(b);
+    int n, k; cin >> n >> k;
 
-    int ans = 0, step = 0;
-    int as = a.size(), bs = b.size();
-    
-    bool nope = true;
+    string s = "";
     for(int i= 0; i < n; i++){
-        step = 0;
-        nope = true;
-
-        if(a[i] > b[i]){
-            for(int j = i + 1; j < n; j++){
-                if(a[j] <= b[i] ) {
-                    step++; 
-                    nope = false;
-                    for(int k = j; k > i; k--){
-                        swap(a[k], a[k - 1]);
-                    }
-                    break;
-                }
-                else step++;
-            }
-            if(nope){
-                cout << -1 << endl; return;
-            }
-            else ans += step;
+        if(i&1){
+            s += '1';
         }
-
+        else s += '0';
+    }
+    //dbg(s);
+    if(k == n - 1) {
+        cout << -1 << endl;
+        return;
     }
 
-    cout << ans << endl;
+   while(k--){
+        if(s[n-1] == '1'){
+            int id ;
+            for(int i = n - 1; i >= 0; i--){
+                if(s[i] == '0'){
+                    s.erase(i, 1);
+                    s += '0';
+                    break;
+                }
+            }
+            //cout << "here: " << s << endl;
+        }
+        else {
+            s.erase(n - 1, 1);
+            s = '0' + s;
+            
+            //cout << "there: " << s << endl;
+        }
+        //dbg(s); 
+   }
+   cout << s << endl;
+
 }
 
 int main()

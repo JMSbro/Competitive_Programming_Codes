@@ -144,38 +144,42 @@ void faltu( T arg, const hello &... rest) {
 
 void solve(){
     int n; cin >> n; 
-    vi a(n), b(n);
-    fill(a) ; fill(b);
-
-    int ans = 0, step = 0;
-    int as = a.size(), bs = b.size();
-    
-    bool nope = true;
-    for(int i= 0; i < n; i++){
-        step = 0;
-        nope = true;
-
-        if(a[i] > b[i]){
-            for(int j = i + 1; j < n; j++){
-                if(a[j] <= b[i] ) {
-                    step++; 
-                    nope = false;
-                    for(int k = j; k > i; k--){
-                        swap(a[k], a[k - 1]);
-                    }
-                    break;
-                }
-                else step++;
-            }
-            if(nope){
-                cout << -1 << endl; return;
-            }
-            else ans += step;
+    int odd = INT_MAX, even =  INT_MIN;
+    vi v; v.pb(0);
+    for(int i = 1; i <= n; i++){
+        int a; cin >> a; v.pb(a);
+        if(i&1){
+            odd = min(odd,a );
         }
-
+        else {
+            even = max(even, a);
+        }
     }
+    v.pb(0);
 
-    cout << ans << endl;
+    if(n & 1) {
+        no return;
+    }
+    int dif = abs(odd - even);
+    if(even < odd && dif > 1){
+        yes
+    }
+    else no 
+
+    // int ok = 1;
+    // for(int i = 1; i <= n; i++){
+    //     if(i&1 && even >= v[i]){
+    //         ok = 0;
+    //     }
+    //     else if(!(i&1) && odd <= v[i]) ok = 0;
+    // }
+
+    // //dbg(even, odd);
+    // if(ok) {
+    //     if(even < odd && dif > 1) yes
+    //     else no 
+    // }
+    // else no 
 }
 
 int main()
