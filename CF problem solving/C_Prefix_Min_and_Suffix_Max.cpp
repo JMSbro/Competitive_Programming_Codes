@@ -143,59 +143,34 @@ void faltu( T arg, const hello &... rest) {
 /// comment cin >> t for single test case
 
 void solve(){
-    int n, k;cin >> n >> k;
-    string s; cin >> s;
+    int n; cin >> n; 
+    vi v(n); fill(v);
 
-    int tcnt = 0, bcnt = 0, qcnt = 0;
-    for(int i = 0; i < k ; i++){
-        if(s[i] == '0') tcnt++;
-        else if(s[i] == '1') bcnt++;
-        else qcnt++;
+    if(n == 2) {
+        cout << 11 << endl;
+        return;
     }
 
-    //dbg(tcnt, bcnt,qcnt);
-    int rem = n - (tcnt + bcnt), qelem = 0, mng = 0;
-    if(rem <= qcnt) {
-        bcnt += rem;
-        rem = 0;
+
+    vi ps(n), ss(n);
+    ps[0] = v[0];
+    ss[n-1] = v[n-1];
+
+    for(int i = 1; i < n; i++){
+        ps[i] = min(ps[i-1], v[i]);
     }
-    else {
-        qelem = 2 * qcnt;
-        if(qelem >= rem) {
-            qelem = rem;
-            rem = 0;
+    for(int i = n - 2; i >= 0; i--){
+        ss[i] = max(ss[i+1], v[i]);
+    }
+
+    cout << 1;
+    for(int i = 1; i < n - 1; i++){
+        if(v[i] > ps[i-1] && v[i] < ss[i+1]){
+            cout << 0;
         }
-        else {
-            rem -= qelem;
-        }
+        else cout << 1;
     }
-
-    // string ans = "";
-    // for(int i = 0; i < n; i++){
-    //     ans += '+';
-    // }
-    //dbg( tcnt, bcnt, rem, qelem);
-
-    while(tcnt--) cout << '-';
-    int f1 = qelem / 2;
-    int f2 = f1;
-    if(qelem&1) f1++;
-    while(f1--) cout << '?';
-    while(rem--) cout << '+';
-    while(f2--) cout << '?';
-    while(bcnt--) cout << '-';
-    
-    cout << endl;
-
-    // int a = count(s.begin(), s.end(), '0');
-    // int b = count(s.begin(), s.end(), '1');
-    // int c = count(s.begin(), s.end(), '2');
-    // string ans(n, '+');
-    // for (int i = 0; i < n; ++i) {
-    //   if (i < a + c || i >= n - b - c) ans[i] = '?';
-    //   if (i < a || i >= n - b || k == n) ans[i] = '-';
-    // }
-    // cout << ans << '\n';
+    cout << 1 << endl;
 }
 
 int main()

@@ -143,59 +143,15 @@ void faltu( T arg, const hello &... rest) {
 /// comment cin >> t for single test case
 
 void solve(){
-    int n, k;cin >> n >> k;
-    string s; cin >> s;
+    int n; cin >> n; 
+    vi v(n); fill(v);
 
-    int tcnt = 0, bcnt = 0, qcnt = 0;
-    for(int i = 0; i < k ; i++){
-        if(s[i] == '0') tcnt++;
-        else if(s[i] == '1') bcnt++;
-        else qcnt++;
-    }
-
-    //dbg(tcnt, bcnt,qcnt);
-    int rem = n - (tcnt + bcnt), qelem = 0, mng = 0;
-    if(rem <= qcnt) {
-        bcnt += rem;
-        rem = 0;
-    }
-    else {
-        qelem = 2 * qcnt;
-        if(qelem >= rem) {
-            qelem = rem;
-            rem = 0;
-        }
-        else {
-            rem -= qelem;
-        }
-    }
-
-    // string ans = "";
-    // for(int i = 0; i < n; i++){
-    //     ans += '+';
-    // }
-    //dbg( tcnt, bcnt, rem, qelem);
-
-    while(tcnt--) cout << '-';
-    int f1 = qelem / 2;
-    int f2 = f1;
-    if(qelem&1) f1++;
-    while(f1--) cout << '?';
-    while(rem--) cout << '+';
-    while(f2--) cout << '?';
-    while(bcnt--) cout << '-';
+    int a = *min_element(all(v));
     
-    cout << endl;
-
-    // int a = count(s.begin(), s.end(), '0');
-    // int b = count(s.begin(), s.end(), '1');
-    // int c = count(s.begin(), s.end(), '2');
-    // string ans(n, '+');
-    // for (int i = 0; i < n; ++i) {
-    //   if (i < a + c || i >= n - b - c) ans[i] = '?';
-    //   if (i < a || i >= n - b || k == n) ans[i] = '-';
-    // }
-    // cout << ans << '\n';
+    if(a == v[0] || v[1] > v[0]) {
+        cout << 2 * v[0] << endl;
+    }
+    else cout << v[0] +v[1] << endl;
 }
 
 int main()
