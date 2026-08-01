@@ -40,7 +40,7 @@ int main() {
         }
     }
 
-    
+    //tutor's:
     // for(int i = 2; i < sq; i++) {
     //     if(prime[i] == 0)
     //         continue;
