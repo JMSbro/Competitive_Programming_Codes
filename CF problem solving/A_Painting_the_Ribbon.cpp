@@ -142,33 +142,25 @@ void faltu( T arg, const hello &... rest) {
 /// no debugger for stack , queue and priority queue. also no iterator for them
 /// comment cin >> t for single test case
 
-
 void solve(){
-        ll n;
-        cin>>n;
+    int n, m, k;
+    cin >> n >> m >>k;
 
-        for(ll i=0;i<(n-1);i++)
-        {
-            ll p;
-            cin>>p;
-        }
-
-        ll m; cin>>m;
-        cout<<m-1<<" ";
-
-        vl a(m);
-        for(ll i=0;i<m;i++)
-        {
-            cin >> a[i];
-        }
-        sort(all(a));
-
-        for(ll i=1;i<m;i++)
-        {
-            cout<<a[i]<<" ";
-        }
-        cout<<endl;
-
+    if(n % m != 0 && k >= n - ((n/m) + 1)){
+        //cout << 1;
+        no
+    }
+    else if(!(n%m) && k >= n - n/m){
+        //cout << 2;
+        no
+    }
+    else if(m == 1){
+        no
+    }
+    else {
+        //cout << 3;
+        yes
+    }
 }
 
 int main()

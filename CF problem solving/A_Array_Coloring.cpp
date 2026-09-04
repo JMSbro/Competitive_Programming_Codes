@@ -142,33 +142,31 @@ void faltu( T arg, const hello &... rest) {
 /// no debugger for stack , queue and priority queue. also no iterator for them
 /// comment cin >> t for single test case
 
-
 void solve(){
-        ll n;
-        cin>>n;
+    int n; cin >> n;
+    vector<pair<int, char>> v(n);
 
-        for(ll i=0;i<(n-1);i++)
-        {
-            ll p;
-            cin>>p;
+    int ck = 0;
+    for(int i = 0; i < n; i++){
+        cin >> v[i].F;
+        if(ck){
+            v[i].S = 'r';
+            ck = 0;
         }
-
-        ll m; cin>>m;
-        cout<<m-1<<" ";
-
-        vl a(m);
-        for(ll i=0;i<m;i++)
-        {
-            cin >> a[i];
+        else {
+            v[i].S = 'b';
+            ck = 1;
         }
-        sort(all(a));
+    }
 
-        for(ll i=1;i<m;i++)
-        {
-            cout<<a[i]<<" ";
+    sort(all(v));
+    for(int i = 0; i < n - 1; i++){
+        if(v[i].S == v[i+1].S){
+            no
+            return;
         }
-        cout<<endl;
-
+    }
+    yes
 }
 
 int main()
