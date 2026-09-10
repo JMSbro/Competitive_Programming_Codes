@@ -141,39 +141,25 @@ void faltu( T arg, const hello &... rest) {
 
 /// no debugger for stack , queue and priority queue. also no iterator for them
 /// comment cin >> t for single test case
-const ll N  = 1e6 + 5;
-bitset<N> isPrime;
-
 
 void solve(){
     int n; cin >> n;
-    int ck;
-    n % 2 == 0? ck = n - 1: ck = n;
-    //dbg(ck);
-    
-    int cnt = 2; 
-    while(isPrime[ck + cnt]){
-        cnt+= 2;
-        if(cnt + ck > n + n - 1) {
-            cout << -1 << endl;
-            return;
-        }
+    vii v(n);
+    for(int i = 0; i < n; i++){
+        cin >> v[i].F;
+    }
+    for(int i = 0; i < n; i++){
+        cin >> v[i].second;
     }
 
-    for(int i = 1; i < n+ 1; i += 2  ){
-        cout << i << ' ';
-    }
+    sort(all(v));
 
-    cout << cnt << ' ';
-    for(int i = 2; i < n+1; i += 2){
-        if(i == cnt){
-            continue;
-        }
-        else{
-            cout << i << ' ';
-        } 
-    }
-    cout << endl;
+    for(int i = 0; i < n; i++){
+        cout << v[i].F << ' ';
+    }cout << endl;
+    for(int i = 0; i < n; i++){
+        cout << v[i].S << ' ';
+    }cout << endl;
 }
 
 int main()
@@ -181,19 +167,6 @@ int main()
     optimize();
     int t = 1;
     cin >> t;
-    isPrime[2] = 1;
-for (int i = 3; i <= N; i += 2)
-    isPrime[i] = 1;
-
-int root = sqrt(N) + 5;
-
-for (int i = 3; i <= root; i += 2) {
-    if (!isPrime[i]) continue;
-
-    for (long long j = 1LL * i * i; j <= N; j += 2 * i) {
-        isPrime[j] = 0;
-    }
-}
     // if(t == 99858){
     //   for(int i = 1; i <= t; i++){
     //     if(i == 27556) {
